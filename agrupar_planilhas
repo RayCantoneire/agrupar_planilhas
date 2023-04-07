@@ -1,0 +1,11 @@
+from glob import glob
+import pandas as pd
+
+lista_tabelas = []
+
+for indice, tabela in enumerate(glob(r"C:\Users\xxx\Documents\Teste\*.xlsx")):
+        lista_tabelas.append(pd.read_excel(tabela, sheet_name=1))
+        lista_tabelas[indice]['Unidade_xxx'] = tabela
+tabela = pd.concat(lista_tabelas)
+        
+tabela.to_excel('Consolidad0.xlsx', index=False)
